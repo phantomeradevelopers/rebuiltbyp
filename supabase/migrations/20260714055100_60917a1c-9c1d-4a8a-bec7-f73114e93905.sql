@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "mogul-bonuses authenticated read" ON storage.objects;

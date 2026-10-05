@@ -1,0 +1,1 @@
+DELETE FROM public.payment_transactions WHERE provider_txn_id = 'pi_e2e_verify_bundle';

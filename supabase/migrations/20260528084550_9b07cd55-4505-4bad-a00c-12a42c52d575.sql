@@ -1,0 +1,2 @@
+ALTER TABLE public.user_profile ADD COLUMN IF NOT EXISTS country_code TEXT;
+ALTER TABLE public.user_profile ADD CONSTRAINT user_profile_country_code_chk CHECK (country_code IS NULL OR country_code ~ '^[A-Z]{2}$');

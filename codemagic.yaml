@@ -1,0 +1,68 @@
+# REBUILT by P — cloud iOS build + TestFlight upload (no Mac needed).
+# Requires in Codemagic: App Store Connect API key integration named "rebuilt_asc".
+workflows:
+  ios-testflight:
+    name: REBUILT iOS → TestFlight
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: rebuilt_asc
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: app.rebuilt.playboyp
+      vars:
+        BUNDLE_ID: app.rebuilt.playboyp
+        APP_STORE_APPLE_ID_TEAM: Q3L694RFDK
+      node: 22
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events: [push]
+      branch_patterns:
+        - pattern: main
+          include: true
+    scripts:
+      - name: Install dependencies
+        script: npm install --legacy-peer-deps
+      - name: Create / sync iOS project
+        script: |
+          # Keep repo-tracked native files, generate the Xcode project if missing.
+          if [ ! -d ios/App/App.xcodeproj ]; then
+            mkdir -p /tmp/ios-keep && cp -R ios/App/App/. /tmp/ios-keep/ 2>/dev/null || true
+            cp -R ios/scripts /tmp/ios-scripts
+            rm -rf ios
+            npx cap add ios
+            cp /tmp/ios-keep/App.entitlements ios/App/App/ 2>/dev/null || true
+            cp /tmp/ios-keep/PrivacyInfo.xcprivacy ios/App/App/ 2>/dev/null || true
+            cp -R /tmp/ios-scripts ios/scripts
+          fi
+          npx cap sync ios
+      - name: Generate app icon + splash
+        script: |
+          npm install --no-save @capacitor/assets
+          mkdir -p assets
+          cp public/icon-512.png assets/icon-only.png
+          cp public/icon-512.png assets/splash.png
+          cp public/icon-512.png assets/splash-dark.png
+          npx @capacitor/assets generate --ios --iconBackgroundColor '#000000' --splashBackgroundColor '#000000' --splashBackgroundColorDark '#000000'
+      - name: Apply Info.plist, privacy manifest, entitlements
+        script: bash ios/scripts/apply-plist.sh
+      - name: Set up code signing
+        script: xcode-project use-profiles
+      - name: Bump build number
+        script: |
+          LATEST=$(app-store-connect get-latest-testflight-build-number "$(app-store-connect apps list --bundle-id-identifier "$BUNDLE_ID" --strict-match-identifier --json | jq -r '.[0].id')" || echo 0)
+          cd ios/App && agvtool new-version -all $((LATEST + 1))
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace ios/App/App.xcworkspace \
+            --scheme App
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

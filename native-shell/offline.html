@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>REBUILT — Offline</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;color:#fff;font-family:-apple-system,system-ui,sans-serif}
+  main{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:env(safe-area-inset-top) 32px env(safe-area-inset-bottom);text-align:center;box-sizing:border-box}
+  .mark{letter-spacing:.32em;font-size:22px}
+  h1{font-size:24px;margin:0;font-weight:600}
+  p{color:rgba(255,255,255,.6);font-size:15px;line-height:1.5;margin:0;max-width:300px}
+  button{height:48px;padding:0 32px;border-radius:999px;border:0;background:#c9a96e;color:#000;font-size:15px;font-weight:600}
+</style>
+</head>
+<body>
+<main>
+  <span class="mark">REBUILT</span>
+  <h1>You're offline.</h1>
+  <p>Reconnect to Wi-Fi or cellular to load today's plan. Your progress is saved.</p>
+  <button onclick="location.href='https://rebuiltbyp.com/app'">Try again</button>
+</main>
+<script>window.addEventListener("online",function(){location.href="https://rebuiltbyp.com/app"});</script>
+</body>
+</html>

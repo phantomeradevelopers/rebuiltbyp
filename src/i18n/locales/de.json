@@ -1,0 +1,80 @@
+{
+  "common": {
+    "loading": "Lädt…",
+    "save": "Speichern",
+    "saving": "Wird gespeichert…",
+    "close": "Schließen",
+    "cancel": "Abbrechen",
+    "retry": "Nochmal versuchen",
+    "home": "Home",
+    "language": "Sprache"
+  },
+  "nav": {
+    "you": "You",
+    "train": "Train",
+    "fuel": "Fuel",
+    "checkin": "Check-in",
+    "coach": "Coach",
+    "today": "Today",
+    "plan": "Plan",
+    "progress": "Progress",
+    "more": "More"
+  },
+  "plan": {
+    "kicker": "Programm",
+    "title": "Dein Plan",
+    "empty_kicker": "Programm",
+    "empty_title": "Noch kein Plan.",
+    "empty_body": "P erstellt deinen Fitness- und Ernährungsplan basierend auf deinem Profil in etwa 20 Sekunden.",
+    "build_cta": "Plan erstellen",
+    "building": "Plan wird erstellt…",
+    "finish_onboarding": "Zuerst Onboarding abschließen",
+    "tabs": {
+      "workouts": "Workouts",
+      "nutrition": "Ernährung"
+    },
+    "journey": "Fortschritt",
+    "week_of": "Woche {{current}} von {{total}}",
+    "focus": "Fokus"
+  },
+  "nutrition": {
+    "built_for_you": "Für dich erstellt",
+    "daily_target": "Tagesziel",
+    "hydration": "Hydrierung",
+    "principles": "P's Prinzipien",
+    "your_week": "Deine Woche",
+    "sample_day": "Beispieltag",
+    "grocery_list": "Einkaufsliste · 7 Tage",
+    "copy": "Kopieren",
+    "training_day": "Trainingstag",
+    "rest_day": "Ruhetag",
+    "eating_out": "Auswärts essen — mit Foto loggen"
+  },
+  "meal_sheet": {
+    "title": "Mahlzeit loggen",
+    "mode_plan": "Aus Plan",
+    "mode_photo": "Foto",
+    "mode_describe": "Beschreiben",
+    "photo_cta": "Foto deiner Mahlzeit machen oder hochladen",
+    "photo_hint": "Direkt von oben, gutes Licht ist am besten.",
+    "estimate_photo": "Foto auswerten",
+    "estimate_text": "Schätzen",
+    "reading": "Teller wird analysiert…",
+    "crunching": "Zahlen werden berechnet…",
+    "p_says": "P sagt",
+    "what_did_you_eat": "Was hast du gegessen?",
+    "save_meal": "Mahlzeit speichern"
+  },
+  "more": {
+    "kicker": "Mehr",
+    "title": "Dein Bereich.",
+    "profile": "Profil",
+    "inbox": "Posteingang",
+    "settings": "Einstellungen",
+    "language_section": "Sprache",
+    "language_hint": "Übersetzt die App-Oberfläche. Dein Plan und die Antworten vom Coach bleiben in der Sprache, in der du sie verfasst hast."
+  },
+  "login": {
+    "welcome": "Willkommen zurück"
+  }
+}

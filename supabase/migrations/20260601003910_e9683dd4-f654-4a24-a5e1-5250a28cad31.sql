@@ -1,0 +1,1 @@
+ALTER TABLE public.journal_replies ADD COLUMN IF NOT EXISTS recommend_breathing boolean NOT NULL DEFAULT false;

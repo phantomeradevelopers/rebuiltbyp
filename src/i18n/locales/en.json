@@ -1,0 +1,80 @@
+{
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "saving": "Saving…",
+    "close": "Close",
+    "cancel": "Cancel",
+    "retry": "Try again",
+    "home": "Home",
+    "language": "Language"
+  },
+  "nav": {
+    "you": "You",
+    "train": "Train",
+    "fuel": "Fuel",
+    "checkin": "Check-in",
+    "coach": "Coach",
+    "today": "Today",
+    "plan": "Plan",
+    "progress": "Progress",
+    "more": "More"
+  },
+  "plan": {
+    "kicker": "Program",
+    "title": "Your plan",
+    "empty_kicker": "Program",
+    "empty_title": "No plan yet.",
+    "empty_body": "P will build a fitness and nutrition plan from your profile in about 20 seconds.",
+    "build_cta": "Build my plan",
+    "building": "Building your plan…",
+    "finish_onboarding": "Finish onboarding first",
+    "tabs": {
+      "workouts": "Workouts",
+      "nutrition": "Nutrition"
+    },
+    "journey": "Journey",
+    "week_of": "Week {{current}} of {{total}}",
+    "focus": "Focus"
+  },
+  "nutrition": {
+    "built_for_you": "Built for you",
+    "daily_target": "Daily target",
+    "hydration": "Hydration",
+    "principles": "P's principles",
+    "your_week": "Your week",
+    "sample_day": "Sample day",
+    "grocery_list": "Grocery list · 7 days",
+    "copy": "Copy",
+    "training_day": "Training day",
+    "rest_day": "Rest day",
+    "eating_out": "Eating out — log with photo"
+  },
+  "meal_sheet": {
+    "title": "Log meal",
+    "mode_plan": "From plan",
+    "mode_photo": "Photo",
+    "mode_describe": "Describe",
+    "photo_cta": "Take or upload a photo of your meal",
+    "photo_hint": "Straight above, good light works best.",
+    "estimate_photo": "Estimate from photo",
+    "estimate_text": "Estimate",
+    "reading": "Reading the plate…",
+    "crunching": "Crunching numbers…",
+    "p_says": "P says",
+    "what_did_you_eat": "What did you eat?",
+    "save_meal": "Save meal"
+  },
+  "more": {
+    "kicker": "More",
+    "title": "Your space.",
+    "profile": "Profile",
+    "inbox": "Inbox",
+    "settings": "Settings",
+    "language_section": "Language",
+    "language_hint": "Translates the app interface. Your plan and coach replies stay in the language you typed them."
+  },
+  "login": {
+    "welcome": "Welcome back"
+  }
+}

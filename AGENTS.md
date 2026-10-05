@@ -1,0 +1,2 @@
+- iOS app is a Capacitor shell loading https://rebuiltbyp.com/app (native-shell/ holds offline page); web-only chrome is hidden via html.native-app — keeps one codebase for web + iOS.
+- Inside the iOS app digital subscriptions use Apple IAP via RevenueCat (src/lib/iap.ts, verified server-side in iap.functions.ts); Stripe is web-only — App Store guideline 3.1.1.

@@ -1,0 +1,80 @@
+{
+  "common": {
+    "loading": "A carregar…",
+    "save": "Guardar",
+    "saving": "A guardar…",
+    "close": "Fechar",
+    "cancel": "Cancelar",
+    "retry": "Tentar de novo",
+    "home": "Início",
+    "language": "Idioma"
+  },
+  "nav": {
+    "you": "You",
+    "train": "Train",
+    "fuel": "Fuel",
+    "checkin": "Check-in",
+    "coach": "Coach",
+    "today": "Today",
+    "plan": "Plan",
+    "progress": "Progress",
+    "more": "More"
+  },
+  "plan": {
+    "kicker": "Programa",
+    "title": "Teu plano",
+    "empty_kicker": "Programa",
+    "empty_title": "Sem plano.",
+    "empty_body": "O P cria o teu plano de treino e nutrição em 20 segundos.",
+    "build_cta": "Criar plano",
+    "building": "A criar plano…",
+    "finish_onboarding": "Termina o registo primeiro",
+    "tabs": {
+      "workouts": "Treinos",
+      "nutrition": "Nutrição"
+    },
+    "journey": "Jornada",
+    "week_of": "Semana {{current}} de {{total}}",
+    "focus": "Foco"
+  },
+  "nutrition": {
+    "built_for_you": "Feito para ti",
+    "daily_target": "Meta diária",
+    "hydration": "Hidratação",
+    "principles": "Princípios do P",
+    "your_week": "Tua semana",
+    "sample_day": "Exemplo de dia",
+    "grocery_list": "Lista de compras · 7 dias",
+    "copy": "Copiar",
+    "training_day": "Dia de treino",
+    "rest_day": "Dia de descanso",
+    "eating_out": "Comer fora — regista com foto"
+  },
+  "meal_sheet": {
+    "title": "Registar refeição",
+    "mode_plan": "Do plano",
+    "mode_photo": "Foto",
+    "mode_describe": "Descrever",
+    "photo_cta": "Tira ou carrega foto da refeição",
+    "photo_hint": "Vista de cima e boa luz é melhor.",
+    "estimate_photo": "Estimar por foto",
+    "estimate_text": "Estimar",
+    "reading": "A ler o prato…",
+    "crunching": "A calcular…",
+    "p_says": "O P diz",
+    "what_did_you_eat": "O que comeste?",
+    "save_meal": "Guardar refeição"
+  },
+  "more": {
+    "kicker": "Mais",
+    "title": "Teu espaço.",
+    "profile": "Perfil",
+    "inbox": "Mensagens",
+    "settings": "Definições",
+    "language_section": "Idioma",
+    "language_hint": "Traduz a interface. O plano e o treinador mantêm o idioma original."
+  },
+  "login": {
+    "welcome": "Bem-vindo de volta"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "common": {
+    "loading": "Cargando…",
+    "save": "Guardar",
+    "saving": "Guardando…",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "retry": "Reintentar",
+    "home": "Inicio",
+    "language": "Idioma"
+  },
+  "nav": {
+    "you": "You",
+    "train": "Train",
+    "fuel": "Fuel",
+    "checkin": "Check-in",
+    "coach": "Coach",
+    "today": "Today",
+    "plan": "Plan",
+    "progress": "Progress",
+    "more": "More"
+  },
+  "plan": {
+    "kicker": "Programa",
+    "title": "Tu plan",
+    "empty_kicker": "Programa",
+    "empty_title": "Sin plan aún.",
+    "empty_body": "P creará tu plan de fitness y nutrición en unos 20 segundos.",
+    "build_cta": "Crear mi plan",
+    "building": "Creando tu plan…",
+    "finish_onboarding": "Termina el registro primero",
+    "tabs": {
+      "workouts": "Entrenos",
+      "nutrition": "Nutrición"
+    },
+    "journey": "Trayecto",
+    "week_of": "Semana {{current}} de {{total}}",
+    "focus": "Enfoque"
+  },
+  "nutrition": {
+    "built_for_you": "Hecho para ti",
+    "daily_target": "Objetivo diario",
+    "hydration": "Hidratación",
+    "principles": "Principios de P",
+    "your_week": "Tu semana",
+    "sample_day": "Día ejemplo",
+    "grocery_list": "Lista de compra · 7 días",
+    "copy": "Copiar",
+    "training_day": "Día de entreno",
+    "rest_day": "Día de descanso",
+    "eating_out": "Comer fuera — registra con foto"
+  },
+  "meal_sheet": {
+    "title": "Registrar comida",
+    "mode_plan": "Del plan",
+    "mode_photo": "Foto",
+    "mode_describe": "Describir",
+    "photo_cta": "Toma o sube una foto de tu comida",
+    "photo_hint": "Desde arriba y con buena luz es mejor.",
+    "estimate_photo": "Estimar con foto",
+    "estimate_text": "Estimar",
+    "reading": "Analizando el plato…",
+    "crunching": "Calculando…",
+    "p_says": "P dice",
+    "what_did_you_eat": "¿Qué comiste?",
+    "save_meal": "Guardar comida"
+  },
+  "more": {
+    "kicker": "Más",
+    "title": "Tu espacio.",
+    "profile": "Perfil",
+    "inbox": "Bandeja",
+    "settings": "Ajustes",
+    "language_section": "Idioma",
+    "language_hint": "Traduce la interfaz. Tu plan y las respuestas del coach se mantienen en el idioma que escribas."
+  },
+  "login": {
+    "welcome": "Bienvenido de nuevo"
+  }
+}

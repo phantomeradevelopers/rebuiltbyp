@@ -1,0 +1,2 @@
+REVOKE EXECUTE ON FUNCTION public.enforce_admin_message_recipient_update() FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.enforce_consult_session_self_update() FROM PUBLIC, anon, authenticated;

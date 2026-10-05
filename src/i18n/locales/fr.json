@@ -1,0 +1,80 @@
+{
+  "common": {
+    "loading": "Chargement…",
+    "save": "Enregistrer",
+    "saving": "Enregistrement…",
+    "close": "Fermer",
+    "cancel": "Annuler",
+    "retry": "Réessayer",
+    "home": "Accueil",
+    "language": "Langue"
+  },
+  "nav": {
+    "you": "You",
+    "train": "Train",
+    "fuel": "Fuel",
+    "checkin": "Check-in",
+    "coach": "Coach",
+    "today": "Today",
+    "plan": "Plan",
+    "progress": "Progress",
+    "more": "More"
+  },
+  "plan": {
+    "kicker": "Programme",
+    "title": "Ton plan",
+    "empty_kicker": "Programme",
+    "empty_title": "Aucun plan.",
+    "empty_body": "P va créer ton plan sport et nutrition en 20 secondes.",
+    "build_cta": "Créer mon plan",
+    "building": "Création du plan…",
+    "finish_onboarding": "Finis ton profil d'abord",
+    "tabs": {
+      "workouts": "Séances",
+      "nutrition": "Nutrition"
+    },
+    "journey": "Parcours",
+    "week_of": "Semaine {{current}} sur {{total}}",
+    "focus": "Objectif"
+  },
+  "nutrition": {
+    "built_for_you": "Sur mesure",
+    "daily_target": "Objectif jour",
+    "hydration": "Hydratation",
+    "principles": "Principes de P",
+    "your_week": "Ta semaine",
+    "sample_day": "Jour type",
+    "grocery_list": "Liste de courses · 7 jours",
+    "copy": "Copier",
+    "training_day": "Jour entraînement",
+    "rest_day": "Jour repos",
+    "eating_out": "Restaurant — log photo"
+  },
+  "meal_sheet": {
+    "title": "Noter repas",
+    "mode_plan": "Du plan",
+    "mode_photo": "Photo",
+    "mode_describe": "Décrire",
+    "photo_cta": "Prends ou charge une photo",
+    "photo_hint": "Vue d'en haut, bonne lumière.",
+    "estimate_photo": "Estimer via photo",
+    "estimate_text": "Estimer",
+    "reading": "Analyse de l'assiette…",
+    "crunching": "Calcul des macros…",
+    "p_says": "L'avis de P",
+    "what_did_you_eat": "Qu'as-tu mangé ?",
+    "save_meal": "Enregistrer"
+  },
+  "more": {
+    "kicker": "Plus",
+    "title": "Ton espace.",
+    "profile": "Profil",
+    "inbox": "Messages",
+    "settings": "Réglages",
+    "language_section": "Langue",
+    "language_hint": "Traduit l'interface. Ton programme et le coach restent dans ta langue de saisie."
+  },
+  "login": {
+    "welcome": "Bon retour"
+  }
+}

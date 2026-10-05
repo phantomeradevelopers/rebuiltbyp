@@ -1,0 +1,1086 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Mobile-native touch behavior */
+html, body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior-y: contain;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+button, a, [role="button"], [data-tap] { touch-action: manipulation; }
+/* iOS zooms when an input's font-size is < 16px on focus */
+input, select, textarea { font-size: 16px; }
+
+/*
+ * REBUILT design system — Ember on Charcoal
+ * Voice: motivational, athletic, decisive. Premium without luxury-soft.
+ * Palette: deep charcoal background, warm off-white text, ember (warm orange) primary,
+ *          muted gold preserved as secondary accent.
+ * Type: Sora (display, athletic geometric), Inter (body), JetBrains Mono (labels/metrics).
+ */
+
+@theme inline {
+  --font-display: "Bebas Neue", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-oxblood: var(--oxblood);
+  --color-oxblood-foreground: var(--oxblood-foreground);
+  --color-charcoal: var(--charcoal);
+  --color-bone: var(--bone);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Core brand — Warm charcoal base. Gold is EARNED ONLY (see rules below). */
+  --background: oklch(0.09 0.003 60);           /* ~#0C0C0E warm onyx */
+  --foreground: oklch(0.95 0.008 80);           /* ~#f2ede4 warm off-white */
+  --charcoal: oklch(0.14 0.004 60);             /* ~#141417 surface 1 */
+  --bone: oklch(0.90 0.010 80);                 /* warm neutral chrome */
+
+  /* Primary = ember (drive, action, heat) — reserved for primary CTAs / achievement */
+  --primary: oklch(0.71 0.18 45);
+  --primary-foreground: oklch(0.07 0 0);
+  --primary-glow: oklch(0.80 0.16 55);
+
+  /* Gold = builder-suite #c9a355 — EARNED accent (streak flame, milestones, hero CTAs).
+     Do NOT use for chrome (borders, tab bar, icons, secondary buttons). */
+  --gold: oklch(0.73 0.11 80);
+  --gold-foreground: oklch(0.07 0 0);
+  --oxblood: oklch(0.40 0.16 25);
+  --oxblood-foreground: oklch(0.94 0.008 80);
+
+  /* Elevated surface tiers — warm dark, not pure black (OLED-friendly, low fatigue) */
+  --card: oklch(0.14 0.004 60);                 /* ~#141417 */
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.18 0.004 60);              /* ~#1B1C20 elevated */
+  --popover-foreground: var(--foreground);
+
+  /* Chrome = warm neutral, not gold */
+  --secondary: oklch(0.18 0.004 60);            /* ~#1B1C20 */
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.16 0.004 60);
+  --muted-foreground: oklch(0.80 0.012 78);     /* bumped for WCAG AA on card/bg (~4.7:1) */
+  --accent: oklch(0.20 0.005 60);
+  --accent-foreground: var(--foreground);
+  --destructive: var(--oxblood);
+  --destructive-foreground: var(--oxblood-foreground);
+
+  /* Borders = warm neutral chrome (bone-tinted), never gold */
+  --border: oklch(0.28 0.006 75);               /* warm gray-bone */
+  --input: oklch(0.16 0.004 60);
+  --ring: var(--gold);                          /* focus ring is a signal — kept gold */
+
+  --chart-1: var(--primary);
+  --chart-2: oklch(0.80 0.16 55);
+  --chart-3: var(--gold);
+  --chart-4: oklch(0.60 0.12 35);
+  --chart-5: oklch(0.50 0.06 60);
+
+  --sidebar: oklch(0.11 0.003 60);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--gold-foreground);
+  --sidebar-accent: oklch(0.16 0.004 60);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--gold);
+
+  /* Fluid type scale */
+  --text-xs:   clamp(0.72rem, 0.7rem  + 0.1vw, 0.78rem);
+  --text-sm:   clamp(0.82rem, 0.8rem  + 0.15vw, 0.92rem);
+  --text-base: clamp(0.95rem, 0.9rem  + 0.2vw, 1.0625rem);
+  --text-lg:   clamp(1.08rem, 1rem    + 0.4vw, 1.22rem);
+  --text-xl:   clamp(1.22rem, 1.1rem  + 0.6vw, 1.5rem);
+  --display-md: clamp(1.5rem,  1.3rem + 1vw,   2rem);
+  --display-lg: clamp(2rem,    1.6rem + 2vw,   3rem);
+  --display-xl: clamp(2.5rem,  2rem   + 3vw,   4rem);
+}
+
+
+/* Dark is the only mode. Keep .dark in sync for shadcn primitives. */
+.dark {
+  --background: oklch(0.09 0.003 60);
+  --foreground: oklch(0.95 0.008 80);
+  --card: oklch(0.14 0.004 60);
+  --card-foreground: oklch(0.95 0.008 80);
+  --popover: oklch(0.18 0.004 60);
+  --popover-foreground: oklch(0.95 0.008 80);
+  --primary: oklch(0.71 0.18 45);
+  --primary-foreground: oklch(0.07 0 0);
+  --secondary: oklch(0.18 0.004 60);
+  --secondary-foreground: oklch(0.95 0.008 80);
+  --muted: oklch(0.16 0.004 60);
+  --muted-foreground: oklch(0.80 0.012 78);
+  --accent: oklch(0.20 0.005 60);
+  --accent-foreground: oklch(0.95 0.008 80);
+  --destructive: oklch(0.40 0.16 25);
+  --destructive-foreground: oklch(0.95 0.008 80);
+  --border: oklch(0.28 0.006 75);
+  --input: oklch(0.16 0.004 60);
+  --ring: oklch(0.73 0.11 80);
+}
+
+
+/* "Daylight" mode — WARM-DARK theme (not paper). A softer, warmer sibling of
+   deep .dark so cards never clash as black bricks. Whole app stays in the
+   black+gold identity, just a stone-charcoal step lighter and warmer. */
+.light {
+  --background: oklch(0.245 0.006 62);            /* ~#2C2925 warm stone */
+  --foreground: oklch(0.945 0.010 82);            /* ~#F2EDE4 warm ivory */
+
+  --card: oklch(0.305 0.008 68);                  /* ~#3C372F raised card */
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.345 0.008 68);               /* ~#454037 elevated */
+  --popover-foreground: var(--foreground);
+
+  --primary: oklch(0.71 0.18 45);
+  --primary-foreground: oklch(0.07 0 0);
+  --primary-glow: oklch(0.80 0.16 55);
+
+  --gold: oklch(0.80 0.15 82);                    /* ~#E8B84B Men's gold on charcoal */
+  --gold-foreground: oklch(0.16 0.008 60);
+  --oxblood: oklch(0.44 0.17 25);
+  --oxblood-foreground: oklch(0.96 0.008 80);
+  --charcoal: oklch(0.20 0.006 62);
+  --bone: oklch(0.94 0.010 82);
+
+  --secondary: oklch(0.325 0.008 68);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.305 0.008 68);
+  --muted-foreground: oklch(0.80 0.014 78);
+  --accent: oklch(0.345 0.008 68);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.48 0.18 25);
+  --destructive-foreground: oklch(0.96 0.008 80);
+
+  --border: oklch(0.36 0.010 75);                 /* ~#4A4438 warm hairline */
+  --input: oklch(0.305 0.008 68);
+  --ring: var(--gold);
+
+  --sidebar: oklch(0.225 0.006 62);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--gold-foreground);
+  --sidebar-accent: oklch(0.305 0.008 68);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--gold);
+
+  /* v2 surface ladder — warm-dark. Cards lift; nested tiles sink. */
+  --bg-base:     #2C2925;
+  --bg-raised:   #3C372F;
+  --bg-elevated: #454037;
+  --bg-overlay:  #4E4840;
+  --bg-sunken:   #242119;
+
+  --border-subtle:  rgba(242,237,228,0.06);
+  --border-default: rgba(242,237,228,0.10);
+  --border-strong:  rgba(242,237,228,0.18);
+
+  --text-primary:   #F2EDE4;
+  --text-secondary: #C4BBA8;
+  --text-tertiary:  #8A8272;
+  --text-disabled:  #56503F;
+
+  --rebuilt-gold:        #E8B84B;
+  --rebuilt-gold-light:  #f0cc72;
+  --rebuilt-gold-bright: #f5dc98;
+  --rebuilt-gold-dim:    rgba(232,184,75,0.14);
+  --rebuilt-gold-glow:   rgba(232,184,75,0.26);
+  --rebuilt-gold-solid:  rgba(232,184,75,0.90);
+
+  --streak-warning:      #ef7a3d;
+  --streak-warning-fg:   #2a1607;
+  --streak-warning-dim:  rgba(239,122,61,0.14);
+  --streak-warning-glow: rgba(239,122,61,0.35);
+
+  --color-success-dim: rgba(16,185,129,0.10);
+  --color-warning-dim: rgba(239,122,61,0.12);
+  --color-danger-dim:  rgba(239,68,68,0.10);
+  --color-faith-dim:   rgba(232,184,75,0.08);
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.45);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.40), 0 0 0 1px rgba(242,237,228,0.05);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.50), 0 0 0 1px rgba(242,237,228,0.06);
+  --shadow-lg: 0 12px 36px rgba(0,0,0,0.55), 0 0 0 1px rgba(242,237,228,0.08);
+
+  --steel:            oklch(0.72 0.008 250);
+  --steel-foreground: oklch(0.15 0.005 250);
+  --gradient-steel:   linear-gradient(135deg, oklch(0.78 0.006 250) 0%, oklch(0.68 0.008 250) 50%, oklch(0.78 0.006 250) 100%);
+  --platinum:            oklch(0.92 0.010 260);
+  --platinum-foreground: oklch(0.10 0.005 260);
+  --gradient-platinum:   linear-gradient(135deg, oklch(0.98 0.006 260) 0%, oklch(0.86 0.010 260) 45%, oklch(0.94 0.008 260) 55%, oklch(0.80 0.012 260) 100%);
+  --shadow-platinum-glow: 0 0 0 1px oklch(0.92 0.010 260 / 0.35), 0 10px 40px -12px oklch(0.90 0.010 260 / 0.30);
+  --gradient-obsidian: linear-gradient(180deg, oklch(0.30 0.008 68) 0%, oklch(0.22 0.006 62) 100%);
+
+  --gradient-card:  linear-gradient(180deg, oklch(0.325 0.008 68) 0%, oklch(0.285 0.008 68) 100%);
+  --gradient-noir:  radial-gradient(ellipse at top, oklch(0.34 0.010 68) 0%, oklch(0.245 0.006 62) 60%);
+
+  --shadow-elegant: 0 1px 0 0 rgba(242,237,228,0.05) inset, 0 20px 40px -20px rgba(0,0,0,0.55), 0 8px 16px -8px rgba(0,0,0,0.40);
+  --shadow-soft:    0 4px 24px -8px rgba(0,0,0,0.45);
+  --shadow-gold-glow: 0 0 0 1px oklch(0.80 0.15 82 / 0.32), 0 8px 28px -10px oklch(0.80 0.15 82 / 0.38);
+  --shadow-nav: rgba(0,0,0,0.55);
+}
+
+
+/* =====================================================================
+   REBUILT v2 — Design Tokens (additive). Brief spec.
+   ===================================================================== */
+:root {
+  /* Backgrounds — warm charcoal ladder (OLED-friendly, less eye fatigue) */
+  --bg-base:     #0C0C0E;
+  --bg-raised:   #141417;
+  --bg-elevated: #1B1C20;
+  --bg-overlay:  #232429;
+  --bg-sunken:   #09090B;
+
+  /* Borders — warm bone-tinted neutral (chrome, not gold) */
+  --border-subtle:  rgba(240,232,216,0.06);
+  --border-default: rgba(240,232,216,0.10);
+  --border-strong:  rgba(240,232,216,0.18);
+
+  /* Text — 4 levels (warm white, bumped for AA on card/bg) */
+  --text-primary:   #F2EDE4;   /* AA on #0C0C0E and #141417 */
+  --text-secondary: #C4BDAB;   /* ~4.9:1 on #141417 */
+  --text-tertiary:  #8A8272;   /* ~3.1:1 — labels only, never body copy */
+  --text-disabled:  #3A362F;
+
+  /* REBUILT brand — Gold System (EARNED ONLY) */
+  --rebuilt-gold:        #c9a355;
+  --rebuilt-gold-light:  #e2c07a;
+  --rebuilt-gold-bright: #f0d090;
+  --rebuilt-gold-dim:    rgba(201,163,85,0.12);
+  --rebuilt-gold-glow:   rgba(201,163,85,0.22);
+  --rebuilt-gold-solid:  rgba(201,163,85,0.85);
+
+  /* Streak / fire (warm orange — separate from brand gold) */
+  --streak-fire: #ff6b35;
+  --streak-dim:  rgba(255,107,53,0.12);
+  --streak-glow: rgba(255,107,53,0.30);
+
+  /* Warning: streak-at-risk. Deliberately red-orange, NOT brand gold. */
+  --streak-warning:      #ef7a3d;
+  --streak-warning-fg:   #2a1607;
+  --streak-warning-dim:  rgba(239,122,61,0.14);
+  --streak-warning-glow: rgba(239,122,61,0.35);
+
+  /* Semantic tints */
+  --color-success-dim: rgba(16,185,129,0.10);
+  --color-warning-dim: rgba(239,122,61,0.12);
+  --color-danger-dim:  rgba(239,68,68,0.10);
+  --color-faith-dim:   rgba(201,163,85,0.08);
+
+
+  /* Shadow scale */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.6);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08);
+  --shadow-gold:        0 0 24px rgba(201,163,85,0.18);
+  --shadow-gold-strong: 0 0 40px rgba(201,163,85,0.34);
+
+  /* Motion */
+  --ease-spring: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-soft: cubic-bezier(0, 0, 0.2, 1);
+  --duration-instant: 80ms;
+  --duration-fast:    150ms;
+  --duration-normal:  220ms;
+  --duration-slow:    350ms;
+  --duration-reveal:  500ms;
+
+  /* Legacy gradients/shadows (kept) */
+  --gradient-ember: linear-gradient(135deg, oklch(0.78 0.18 50) 0%, oklch(0.71 0.18 45) 50%, oklch(0.65 0.17 40) 100%);
+  --gradient-ember-sheen: linear-gradient(115deg, transparent 30%, oklch(0.88 0.14 60 / 0.30) 50%, transparent 70%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.13 80) 0%, oklch(0.74 0.12 78) 50%, oklch(0.82 0.13 80) 100%);
+  --gradient-gold-sheen: linear-gradient(115deg, transparent 30%, oklch(0.92 0.08 85 / 0.35) 50%, transparent 70%);
+  --gradient-noir: radial-gradient(ellipse at top, oklch(0.22 0.010 65) 0%, oklch(0.16 0.006 60) 60%);
+  --gradient-card: linear-gradient(180deg, oklch(0.23 0.008 65) 0%, oklch(0.19 0.007 60) 100%);
+  --shadow-elegant: 0 1px 0 0 oklch(0.40 0.02 70 / 0.4) inset, 0 20px 40px -20px oklch(0 0 0 / 0.6), 0 8px 16px -8px oklch(0 0 0 / 0.4);
+  --shadow-ember-glow: 0 0 0 1px oklch(0.71 0.18 45 / 0.35), 0 8px 32px -8px oklch(0.71 0.18 45 / 0.45);
+  --shadow-gold-glow:  0 0 0 1px oklch(0.78 0.13 78 / 0.3), 0 8px 32px -8px oklch(0.78 0.13 78 / 0.35);
+  --shadow-soft: 0 4px 24px -8px oklch(0 0 0 / 0.5);
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Premium tier metals (Free = steel, Elite = platinum) ---- */
+  --steel:            oklch(0.72 0.008 250);
+  --steel-foreground: oklch(0.15 0.005 250);
+  --gradient-steel:   linear-gradient(135deg, oklch(0.78 0.006 250) 0%, oklch(0.68 0.008 250) 50%, oklch(0.78 0.006 250) 100%);
+
+  --platinum:            oklch(0.92 0.010 260);
+  --platinum-foreground: oklch(0.10 0.005 260);
+  --gradient-platinum:   linear-gradient(135deg, oklch(0.98 0.006 260) 0%, oklch(0.86 0.010 260) 45%, oklch(0.94 0.008 260) 55%, oklch(0.80 0.012 260) 100%);
+  --shadow-platinum-glow: 0 0 0 1px oklch(0.92 0.010 260 / 0.35), 0 10px 40px -12px oklch(0.90 0.010 260 / 0.30);
+
+  /* Elite obsidian surface — deeper and richer than default card */
+  --gradient-obsidian: linear-gradient(180deg, oklch(0.14 0.006 260) 0%, oklch(0.09 0.005 260) 100%);
+}
+
+/* =====================================================================
+   REBUILT Angels — women's track skin. Same dark cinematic base, but
+   the entire "earned" accent ladder swaps from molten gold to warm
+   rose-gold / champagne. Card surfaces pick up a very subtle warm plum
+   undertone. Streak-warning stays the distinct red-orange (not gold).
+   Applied when <html data-track="angels">. Works in dark AND light mode.
+   ===================================================================== */
+[data-track="angels"] {
+  /* ---- Core token flip: gold -> rose-gold ---- */
+  --gold: oklch(0.75 0.08 20);                    /* #d9a6a0 rose-gold, AA on dark */
+  --gold-foreground: oklch(0.15 0.005 25);        /* dark ink on rose */
+  --ring: var(--gold);
+  --chart-3: var(--gold);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--gold-foreground);
+  --sidebar-ring: var(--gold);
+
+  /* Subtle warm plum undertone on elevated surfaces */
+  --card:    oklch(0.145 0.010 20);
+  --popover: oklch(0.185 0.010 20);
+  --accent:  oklch(0.205 0.010 20);
+
+  /* Legacy rose-gold shorthands (keep in sync with --gold) */
+  --rebuilt-gold:        #d9a6a0;
+  --rebuilt-gold-light:  #e8c2ba;
+  --rebuilt-gold-bright: #f3d4cb;
+  --rebuilt-gold-dim:    rgba(217,166,160,0.14);
+  --rebuilt-gold-glow:   rgba(217,166,160,0.28);
+  --rebuilt-gold-solid:  rgba(217,166,160,0.90);
+  --shadow-gold:         0 0 24px rgba(217,166,160,0.22);
+  --shadow-gold-strong:  0 0 40px rgba(217,166,160,0.42);
+  --text-primary:   #f7f0ec;
+  --color-faith-dim: rgba(217,166,160,0.10);
+
+  /* Gradient tokens used by .btn-gold and premium CTAs */
+  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.06 30) 0%, oklch(0.75 0.09 22) 50%, oklch(0.86 0.06 30) 100%);
+  --gradient-gold-sheen: linear-gradient(115deg, transparent 30%, oklch(0.93 0.05 35 / 0.35) 50%, transparent 70%);
+  --shadow-gold-glow: 0 0 0 1px oklch(0.78 0.09 22 / 0.35), 0 8px 32px -8px oklch(0.78 0.09 22 / 0.40);
+}
+/* Angels + Daylight — warm-dark with rosier stone tint + rose-gold accent */
+.light[data-track="angels"] {
+  /* Slightly warmer/rosier stone so Angels-Daylight feels distinct */
+  --background: oklch(0.250 0.010 25);
+  --card:       oklch(0.310 0.012 25);
+  --popover:    oklch(0.350 0.012 25);
+  --secondary:  oklch(0.330 0.012 25);
+  --muted:      oklch(0.310 0.012 25);
+  --accent:     oklch(0.350 0.012 25);
+  --border:     oklch(0.37 0.014 22);
+
+  --bg-base:     #302823;
+  --bg-raised:   #40352E;
+  --bg-elevated: #493C34;
+  --bg-overlay:  #52443C;
+  --bg-sunken:   #251E19;
+
+  --gold: oklch(0.78 0.09 22);                    /* rose-gold ~#D9A6A0 on charcoal */
+  --gold-foreground: oklch(0.16 0.008 25);
+
+  --rebuilt-gold:        #D9A6A0;
+  --rebuilt-gold-light:  #e8c2ba;
+  --rebuilt-gold-bright: #f3d4cb;
+  --rebuilt-gold-dim:    rgba(217,166,160,0.14);
+  --rebuilt-gold-glow:   rgba(217,166,160,0.26);
+  --rebuilt-gold-solid:  rgba(217,166,160,0.90);
+  --shadow-gold:         0 0 24px rgba(217,166,160,0.22);
+  --shadow-gold-strong:  0 0 40px rgba(217,166,160,0.38);
+  --shadow-gold-glow:    0 0 0 1px oklch(0.78 0.09 22 / 0.32), 0 8px 28px -10px oklch(0.78 0.09 22 / 0.38);
+  --color-faith-dim:     rgba(217,166,160,0.10);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.06 30) 0%, oklch(0.75 0.09 22) 50%, oklch(0.86 0.06 30) 100%);
+  --gradient-gold-sheen: linear-gradient(115deg, transparent 30%, oklch(0.93 0.05 35 / 0.35) 50%, transparent 70%);
+  --gradient-card: linear-gradient(180deg, oklch(0.325 0.012 25) 0%, oklch(0.290 0.012 25) 100%);
+  --gradient-noir: radial-gradient(ellipse at top, oklch(0.35 0.014 25) 0%, oklch(0.250 0.010 25) 60%);
+}
+
+
+/* REBUILT v2 utility classes — opt-in, applied by new components. */
+.rb-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.rb-card-sunken {
+  background: var(--bg-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+.rb-hero-pulse {
+  animation: rb-gold-pulse 2.4s ease-in-out infinite;
+}
+@keyframes rb-gold-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,163,85,0.0), var(--shadow-gold); }
+  50%      { box-shadow: 0 0 0 6px rgba(201,163,85,0.0), var(--shadow-gold-strong); }
+}
+.rb-skeleton {
+  background: linear-gradient(90deg, var(--bg-elevated) 0%, var(--bg-overlay) 40%, var(--bg-elevated) 80%);
+  background-size: 200% 100%;
+  animation: rb-shimmer 1.6s infinite ease-in-out;
+  border-radius: 10px;
+}
+@keyframes rb-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-hero-pulse, .rb-skeleton { animation: none !important; }
+}
+
+/* =====================================================================
+   Streak-at-risk warning — deliberately distinct from brand gold so it
+   never reads as "achievement". Warm red-orange, not amber-gold.
+   ===================================================================== */
+.streak-warning {
+  color: var(--streak-warning);
+  background: var(--streak-warning-dim);
+  border: 1px solid color-mix(in oklab, var(--streak-warning) 45%, transparent);
+}
+.streak-warning-solid {
+  background: var(--streak-warning);
+  color: var(--streak-warning-fg);
+  border: 1px solid color-mix(in oklab, var(--streak-warning) 70%, black);
+}
+.streak-warning-glow {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--streak-warning) 40%, transparent),
+              0 8px 28px -8px var(--streak-warning-glow);
+}
+
+/* =====================================================================
+   Time-of-day tint — very subtle background temperature shift. Applied
+   via <html data-tod="dawn|day|dusk|night"> from RootShell. CSS-only
+   effect; respects prefers-reduced-motion (no transition).
+   ===================================================================== */
+:root {
+  --tod-tint: 0 0 0;
+  --tod-alpha: 0;
+}
+[data-tod="dawn"]  { --tod-tint: 240 168 108; --tod-alpha: 0.055; }
+[data-tod="day"]   { --tod-tint: 0 0 0;       --tod-alpha: 0;     }
+[data-tod="dusk"]  { --tod-tint: 132 128 196; --tod-alpha: 0.050; }
+[data-tod="night"] { --tod-tint: 76 96 156;   --tod-alpha: 0.038; }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(120% 90% at 50% -10%,
+    rgb(var(--tod-tint) / var(--tod-alpha)),
+    transparent 70%);
+  transition: background 900ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { transition: none; }
+}
+
+
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .font-display { font-family: var(--font-display); }
+  .font-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+  .font-mono    { font-family: var(--font-mono); }
+
+  /* Mono labels (day counter, macros, etc.) — readable floor of 11px, weight 600 */
+  .label-mono {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-muted-foreground);
+  }
+  .label-mono-sm {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-muted-foreground);
+  }
+
+  /* Safe-area padding for iOS PWA / Capacitor */
+  .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  .pt-safe { padding-top: max(1rem, env(safe-area-inset-top)); }
+  .pl-safe { padding-left: env(safe-area-inset-left); }
+  .pr-safe { padding-right: env(safe-area-inset-right); }
+  .pb-nav { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+  .min-tap { min-height: 44px; min-width: 44px; }
+
+  /* Accessibility — visible focus for keyboard users only */
+  :where(button, a, [role="button"], input, select, textarea):focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Honor reduced-motion across all custom animations */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .animate-count-up, .pulse-gold, .text-gold-shimmer, .typing-dot { animation: none !important; }
+  }
+
+  /* Premium utilities */
+  .hairline { height: 1px; background: linear-gradient(90deg, transparent, oklch(0.74 0.10 80 / 0.35), transparent); }
+  .hairline-strong { height: 1px; background: linear-gradient(90deg, transparent, oklch(0.74 0.10 80 / 0.6), transparent); }
+
+  /* Large ghost/watermark display headline — visible in dark AND light.
+     Dark: warm ivory at low opacity. Light: warm ink at low opacity.
+     Use for the giant "EVERYTHING ABOUT YOU." / "EAT TO WIN." heros. */
+  .headline-watermark {
+    color: rgba(242, 237, 228, 0.10);
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+  }
+  .light .headline-watermark { color: rgba(242, 237, 228, 0.10); }
+  .card-elevated {
+    background: var(--gradient-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elegant);
+  }
+  .btn-gold {
+    background: var(--gradient-gold);
+    color: var(--gold-foreground);
+    box-shadow: 0 1px 0 0 oklch(0.92 0.08 85 / 0.4) inset, 0 8px 24px -8px oklch(0.74 0.10 80 / 0.45);
+    transition: transform 0.2s var(--ease-luxury), box-shadow 0.2s var(--ease-luxury);
+  }
+  .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 1px 0 0 oklch(0.92 0.08 85 / 0.5) inset, 0 12px 32px -8px oklch(0.74 0.10 80 / 0.6); }
+  .btn-gold:active { transform: translateY(0); }
+  .btn-ember {
+    background: var(--gradient-ember);
+    color: var(--primary-foreground);
+    font-weight: 600;
+    box-shadow: 0 1px 0 0 oklch(0.88 0.14 60 / 0.45) inset, 0 8px 24px -8px oklch(0.71 0.18 45 / 0.55);
+    transition: transform 0.2s var(--ease-luxury), box-shadow 0.2s var(--ease-luxury);
+  }
+  .btn-ember:hover { transform: translateY(-1px); box-shadow: 0 1px 0 0 oklch(0.88 0.14 60 / 0.6) inset, 0 12px 32px -8px oklch(0.71 0.18 45 / 0.7); }
+  .btn-ember:active { transform: translateY(0); }
+
+  /* ---- Premium tier cards & buttons ---- */
+  .tier-card-steel {
+    background: var(--gradient-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elegant);
+  }
+  .tier-card-gold {
+    position: relative;
+    background: var(--gradient-card);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    background-clip: padding-box;
+    box-shadow: var(--shadow-elegant), var(--shadow-gold-glow);
+  }
+  .tier-card-gold::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-gold);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .tier-card-platinum {
+    position: relative;
+    background: var(--gradient-obsidian);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    background-clip: padding-box;
+    box-shadow: var(--shadow-elegant), var(--shadow-platinum-glow);
+  }
+  .tier-card-platinum::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-platinum);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .btn-platinum {
+    background: var(--gradient-platinum);
+    color: var(--platinum-foreground);
+    font-weight: 600;
+    box-shadow: 0 1px 0 0 oklch(1.00 0.004 260 / 0.6) inset, 0 8px 24px -8px oklch(0.90 0.010 260 / 0.45);
+    transition: transform 0.2s var(--ease-luxury), box-shadow 0.2s var(--ease-luxury);
+  }
+  .btn-platinum:hover { transform: translateY(-1px); box-shadow: 0 1px 0 0 oklch(1.00 0.004 260 / 0.7) inset, 0 12px 32px -8px oklch(0.90 0.010 260 / 0.6); }
+  .btn-platinum:active { transform: translateY(0); }
+
+  /* ---- Onyx flagship (1:1 with P) — deepest obsidian + platinum outer /
+     gold inner double border. Reads one step ABOVE the gold Pro card. ---- */
+  .tier-card-onyx {
+    position: relative;
+    background: var(--gradient-obsidian);
+    border: 1px solid transparent;
+    border-radius: var(--radius-lg);
+    background-clip: padding-box;
+    box-shadow:
+      var(--shadow-elegant),
+      0 0 0 1px oklch(0.62 0.012 260 / 0.22),
+      0 20px 60px -20px oklch(0.60 0.012 260 / 0.35),
+      0 0 40px -10px oklch(0.74 0.10 80 / 0.18);
+  }
+  /* Outer platinum ring */
+  .tier-card-onyx::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-platinum);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  /* Inner gold hairline */
+  .tier-card-onyx::after {
+    content: "";
+    position: absolute; inset: 4px;
+    border-radius: calc(var(--radius-lg) - 4px);
+    padding: 1px;
+    background: var(--gradient-gold);
+    opacity: 0.55;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .text-platinum {
+    background: var(--gradient-platinum);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .text-steel { color: var(--steel); }
+  .text-gold-metal {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .text-gold-shimmer {
+    background: linear-gradient(90deg, var(--gold) 0%, oklch(0.92 0.08 85) 50%, var(--gold) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-count-up { animation: count-up 0.6s var(--ease-luxury) both; }
+  @keyframes gold-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.74 0.10 80 / 0.6); }
+    50% { box-shadow: 0 0 0 6px oklch(0.74 0.10 80 / 0); }
+  }
+  .pulse-gold { animation: gold-pulse 2s var(--ease-luxury) infinite; }
+  @keyframes typing-dot {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+  .typing-dot { animation: typing-dot 1.2s infinite; }
+
+  /* =========================================================================
+     Trophy Room — cartoon trophy animations
+     ========================================================================= */
+  @keyframes trophy-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-3px) rotate(-1.5deg); }
+  }
+  @keyframes trophy-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25%      { transform: rotate(-6deg); }
+    75%      { transform: rotate(6deg); }
+  }
+  @keyframes trophy-sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+    50%      { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+  @keyframes trophy-glow-pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%      { opacity: 0.9;  transform: scale(1.08); }
+  }
+  @keyframes trophy-unlock-pop {
+    0%   { transform: scale(0) rotate(-25deg); opacity: 0; }
+    55%  { transform: scale(1.18) rotate(8deg); opacity: 1; }
+    75%  { transform: scale(0.95) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+  @keyframes trophy-burst-out {
+    0%   { transform: translate(0,0) scale(0.4); opacity: 0; }
+    25%  { opacity: 1; }
+    100% { transform: translate(var(--bx, 30px), var(--by, -30px)) scale(1.4); opacity: 0; }
+  }
+  @keyframes lock-pulse {
+    0%, 100% { opacity: 0.7; }
+    50%      { opacity: 1; }
+  }
+
+  .trophy-idle    { animation: trophy-bob 3.4s ease-in-out infinite; transform-origin: 50% 90%; }
+  .trophy-hoverable:hover .trophy-body { animation: trophy-wiggle 0.55s ease-in-out; }
+  .trophy-sparkle-1 { animation: trophy-sparkle 3.2s ease-in-out infinite; }
+  .trophy-sparkle-2 { animation: trophy-sparkle 3.2s ease-in-out 1.1s infinite; }
+  .trophy-sparkle-3 { animation: trophy-sparkle 3.2s ease-in-out 2s infinite; }
+  .trophy-glow      { animation: trophy-glow-pulse 2.6s ease-in-out infinite; }
+  .trophy-unlock    { animation: trophy-unlock-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both; transform-origin: 50% 90%; }
+  .trophy-burst     { animation: trophy-burst-out 1.1s ease-out forwards; }
+  .lock-pulse       { animation: lock-pulse 2s ease-in-out infinite; }
+
+  /* =====================================================
+     Trophy Cards — collectible item frames
+     ===================================================== */
+  .trophy-card {
+    position: relative;
+    border-radius: 14px;
+    background:
+      linear-gradient(180deg, oklch(0.18 0.01 60) 0%, oklch(0.12 0.005 60) 100%);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.25s ease;
+    will-change: transform;
+    box-shadow:
+      0 1px 0 0 rgba(255,255,255,0.04) inset,
+      0 12px 28px -16px rgba(0,0,0,0.8);
+  }
+  .trophy-card:hover {
+    box-shadow:
+      0 1px 0 0 rgba(255,255,255,0.08) inset,
+      0 24px 48px -18px rgba(0,0,0,0.9),
+      0 0 24px -4px var(--trophy-glow, rgba(201,169,97,0.45));
+  }
+  .trophy-card[data-locked="true"] { filter: grayscale(0.4) brightness(0.85); }
+
+  /* Foil border — animated gradient ring */
+  .trophy-card-foil {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    padding: 1.5px;
+    background: var(--trophy-foil, linear-gradient(135deg, #c9a961, #fff7e6, #c9a961, #6b3f0a, #c9a961));
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: foil-shimmer 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes foil-shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+
+  /* Holographic sheen — sweeps on hover, follows cursor */
+  .trophy-card-holo {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background:
+      radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255,255,255,0.18) 0%,
+        rgba(255,255,255,0.05) 25%,
+        transparent 55%),
+      linear-gradient(115deg,
+        transparent 30%,
+        rgba(255,255,255,0.06) 45%,
+        rgba(255,255,255,0.12) 50%,
+        rgba(255,255,255,0.06) 55%,
+        transparent 70%);
+    background-size: 100% 100%, 250% 250%;
+    background-position: 0 0, calc(var(--mx, 50%) * -1) 50%;
+    mix-blend-mode: overlay;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Per-tier foil + glow */
+  .trophy-card-bronze   { --trophy-foil: linear-gradient(135deg, #b45309, #fde2a3, #d97706, #6b3f0a, #b45309); --trophy-glow: rgba(217,119,6,0.5); }
+  .trophy-card-silver   { --trophy-foil: linear-gradient(135deg, #64748b, #ffffff, #94a3b8, #1e293b, #64748b); --trophy-glow: rgba(148,163,184,0.5); }
+  .trophy-card-gold     { --trophy-foil: linear-gradient(135deg, #d97706, #fffbe6, #fde047, #a05a05, #d97706); --trophy-glow: rgba(234,179,8,0.6); }
+  .trophy-card-platinum { --trophy-foil: linear-gradient(135deg, #a855f7, #bef0ff, #f0abfc, #6d28d9, #a855f7); --trophy-glow: rgba(217,70,239,0.65); }
+  .trophy-card-mythic   { --trophy-foil: linear-gradient(135deg, #7f1d1d, #fde68a, #dc2626, #1c0606, #7f1d1d); --trophy-glow: rgba(220,38,38,0.75); }
+  .trophy-card-mythic   { background: linear-gradient(180deg, oklch(0.16 0.05 20) 0%, oklch(0.08 0.02 20) 100%); }
+  .trophy-card-mythic .trophy-card-foil { animation-duration: 3.5s; }
+
+  .trophy-tier-bronze   { color: #fbbf6b; }
+  .trophy-tier-silver   { color: #cbd5e1; }
+  .trophy-tier-gold     { color: #fde047; }
+  .trophy-tier-platinum { color: #f0abfc; }
+  .trophy-tier-mythic   { color: #fca5a5; }
+
+  /* Flip-reveal for unlock overlay */
+  .trophy-card-flip { animation: card-flip-reveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+  @keyframes card-flip-reveal {
+    0%   { transform: perspective(800px) rotateY(180deg) scale(0.85); opacity: 0; }
+    60%  { opacity: 1; }
+    100% { transform: perspective(800px) rotateY(0deg) scale(1); opacity: 1; }
+  }
+
+  /* LOCKED ribbon overlay for preview-mode trophies */
+  .trophy-locked-stamp {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 30;
+    pointer-events: none;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.35em;
+    font-size: 13px;
+    color: hsl(var(--background));
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  }
+  .trophy-locked-stamp::before {
+    content: "";
+    position: absolute;
+    left: -8%;
+    right: -8%;
+    height: 22px;
+    background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.95) 12%, rgba(220, 38, 38, 0.95) 88%, transparent);
+    transform: rotate(-12deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.25);
+    z-index: -1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trophy-card-foil, .trophy-card-flip { animation: none !important; }
+    .trophy-card { transform: none !important; }
+  }
+}
+
+/* =====================================================
+   Daily Finale — Lambo + skid + smoke + speed lines
+   ===================================================== */
+@layer components {
+  .finale-fade { animation: finale-fade-in 0.35s ease-out both; }
+  @keyframes finale-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .finale-stamp { animation: finale-stamp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+  @keyframes finale-stamp {
+    0%   { transform: translate(-50%, 0) scale(2.4) rotate(-6deg); opacity: 0; filter: blur(8px); }
+    70%  { transform: translate(-50%, 0) scale(0.96) rotate(-1deg); opacity: 1; filter: blur(0); }
+    100% { transform: translate(-50%, 0) scale(1) rotate(-2deg); opacity: 1; }
+  }
+
+  .dust-shockwave {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 9999px;
+    border: 1.5px solid rgba(212, 175, 55, 0.85);
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.55), inset 0 0 18px rgba(255, 225, 140, 0.25);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: dust-shockwave 2.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .dust-shockwave-2 {
+    border-color: rgba(212, 175, 55, 0.45);
+    animation-delay: 0.35s;
+    animation-duration: 3s;
+  }
+  @keyframes dust-shockwave {
+    0%   { width: 0; height: 0; opacity: 0; border-width: 1.5px; }
+    8%   { opacity: 0.95; }
+    100% { width: 120vmin; height: 120vmin; opacity: 0; border-width: 0.5px; }
+  }
+
+  .gold-flake {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--size, 3px);
+    height: var(--size, 3px);
+    border-radius: 1px;
+    background: linear-gradient(135deg, #fff6c2, #d4af37 55%, #8a6a1d);
+    filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.7));
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation:
+      gold-flake-fly var(--dur, 2.8s) cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms) both,
+      gold-flake-shimmer 0.55s ease-in-out var(--delay, 0ms) infinite;
+  }
+  @keyframes gold-flake-fly {
+    0%   { transform: translate(-50%, -50%) scale(0.2) rotateZ(0deg); opacity: 0; }
+    10%  { opacity: 1; transform: translate(-50%, -50%) scale(1) rotateZ(calc(var(--spin) * 0.1)); }
+    70%  { opacity: 1; }
+    100% {
+      transform:
+        translate(calc(-50% + var(--dx)), calc(-50% + var(--dy)))
+        scale(0.7)
+        rotateZ(var(--spin));
+      opacity: 0;
+    }
+  }
+  @keyframes gold-flake-shimmer {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.7)) brightness(1); }
+    50%      { filter: drop-shadow(0 0 7px rgba(255, 230, 140, 1)) brightness(1.6); }
+  }
+
+  .dust-afterglow {
+    width: 70vmin;
+    height: 70vmin;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.45) 0%, rgba(212, 175, 55, 0.18) 35%, rgba(212, 175, 55, 0) 70%);
+    opacity: 0;
+    animation: dust-afterglow 3.4s ease-out 0.1s both;
+  }
+  @keyframes dust-afterglow {
+    0%   { transform: scale(0.4); opacity: 0; }
+    30%  { opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 0; }
+  }
+
+  .finale-godrays {
+    background:
+      conic-gradient(from 0deg at 50% 60%,
+        transparent 0deg,
+        rgba(201,168,76,0.15) 10deg,
+        transparent 20deg,
+        rgba(201,168,76,0.12) 40deg,
+        transparent 60deg,
+        rgba(201,168,76,0.18) 90deg,
+        transparent 120deg,
+        rgba(201,168,76,0.1) 150deg,
+        transparent 180deg,
+        rgba(201,168,76,0.15) 220deg,
+        transparent 260deg,
+        rgba(201,168,76,0.12) 300deg,
+        transparent 340deg);
+    animation: godrays-spin 18s linear infinite;
+  }
+  @keyframes godrays-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dust-shockwave, .dust-shockwave-2, .gold-flake, .dust-afterglow, .finale-godrays {
+      animation: none !important;
+    }
+  }
+
+}
+
+/* Onboarding step entrance — fail-safe: the element is fully visible by
+   default; the animation only fades/slides it in when it runs. */
+.step-enter {
+  opacity: 1;
+  animation: step-enter-fade 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes step-enter-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-enter { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Native iOS shell: hide web-only chrome, respect safe areas. */
+html.native-app .admin-signature-mark,
+html.native-app [data-web-only] {
+  display: none !important;
+}
+html.native-app body {
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+html.native-app input,
+html.native-app textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}

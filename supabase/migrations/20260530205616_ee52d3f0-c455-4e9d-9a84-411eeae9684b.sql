@@ -1,0 +1,2 @@
+ALTER TABLE public.user_profile ADD COLUMN IF NOT EXISTS connected_apps_interest text[] NOT NULL DEFAULT '{}';
+ALTER TABLE public.user_profile ADD COLUMN IF NOT EXISTS faith_mode_enabled boolean NOT NULL DEFAULT false;

@@ -1,0 +1,1 @@
+UPDATE public.user_plans SET plan_type='fitness' WHERE plan_type='workout';
